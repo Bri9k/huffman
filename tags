@@ -1,0 +1,25 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+SIZE	char_freq.c	3;"	d	file:
+anylyse_frequency	char_freq.c	/^int anylyse_frequency() {$/;"	f
+ascii	char_freq.c	/^	int ascii;$/;"	m	struct:node	file:
+bit	char_freq.c	/^	char bit;$/;"	m	struct:node	file:
+build_array	char_freq.c	/^int build_array(int * freq_array) {$/;"	f
+discovered	char_freq.c	/^	char discovered;$/;"	m	struct:node	file:
+freq	char_freq.c	/^	unsigned int freq;$/;"	m	struct:node	file:
+freq_array	char_freq.c	/^int freq_array[SIZE] = {0, };$/;"	v
+huff_array	char_freq.c	/^node *huff_array[SIZE];$/;"	v
+huff_size	char_freq.c	/^int huff_size = 0;$/;"	v
+insert_huff_node	char_freq.c	/^int insert_huff_node(node *key, node *huff_array[], int size) {$/;"	f
+internal	char_freq.c	/^	char internal;$/;"	m	struct:node	file:
+left	char_freq.c	/^	struct node *left;$/;"	m	struct:node	typeref:struct:node::node	file:
+main	char_freq.c	/^int main()$/;"	f
+node	char_freq.c	/^typedef struct node {$/;"	s	file:
+node	char_freq.c	/^} node;$/;"	t	typeref:struct:node	file:
+reduce	char_freq.c	/^int reduce(node *huff_array[], int size) {$/;"	f
+right	char_freq.c	/^	struct node *right;$/;"	m	struct:node	typeref:struct:node::node	file:
+traverse	char_freq.c	/^int traverse(node *arm) {$/;"	f
