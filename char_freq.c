@@ -3,7 +3,6 @@
 #define SIZE 256
 
 int freq_array[SIZE] = {0, };
-int encoding_array[SIZE];
 int ep = 0;
 int huff_size = 0;
 int count = 0;
@@ -17,6 +16,15 @@ typedef struct node {
 	struct node *left;
 	struct node *right;
 } node;
+
+typedef struct {
+		int ascii;
+		char path[16];
+}encoding;
+
+encoding track;
+
+encoding enc_array[256];
 
 node *huff_array[SIZE];
 
@@ -105,19 +113,22 @@ int reduce(node *huff_array[], int size) {
 
 
 
-int traverse(node *arm) {
+int traverse(node *arm, int edge) {
 	if (arm->left != NULL || arm->right != NULL) {
 		if (arm->left != NULL) {
-			traverse(arm->left);
+			track.path[edge] = '0';			
+			traverse(arm->left, edge + 1);
 		}
 		if (arm->right != NULL) {
-			traverse(arm->right);
+			track.path[edge] = '1';
+			traverse(arm->right, edge + 1);
 		}
-		encoding_array[ep++] = 
-		printf("%d-%c %d\n", count++, arm->ascii, arm->freq);
+		/* printf("%d-%c %d\n", count, arm->ascii, arm->freq); */
 	}
 	else {
-		printf("%d-%c %d\n", count++, arm->ascii, arm->freq);
+		track.ascii = arm->ascii;
+		track.path[edge] = '\0';
+		printf("Encoding: %d: %c %d\t%s\n", count++, track.ascii, arm->freq, track.path);
 	}
 }
 
@@ -132,8 +143,9 @@ int main()
 
 	anylyse_frequency();
 	build_array(freq_array);
+	int i;
 
-	for (int i = 0; i < huff_size; ++i) {
+	for (i = 0; i < huff_size; ++i) {
 		printf("%d-%c\t%d\n", i, huff_array[i]->ascii, huff_array[i]->freq);
 	}
 	printf("\n");
@@ -142,9 +154,9 @@ int main()
 
 	arm = huff_array[0];
 
-	traverse(arm);
+	traverse(arm, 0);
 	
-	for (int i = 0; i < huff_size; ++i) {
+	for (i = 0; i < huff_size; ++i) {
 		printf("%d-%c\t%d\n", i, huff_array[i]->ascii, huff_array[i]->freq);
 	}
 	printf("\n");
